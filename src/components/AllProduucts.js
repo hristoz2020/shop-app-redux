@@ -16,7 +16,7 @@ const AllProducts = () => {
 	}, [dispatch]);
 
 	return (
-		<div className="ui grid container">
+		<div className="">
 			<Products />
 		</div>
 	);

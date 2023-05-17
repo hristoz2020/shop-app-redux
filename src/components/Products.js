@@ -7,17 +7,17 @@ const Products = () => {
 	return (
 		<div>
 			{products.map(({ id, title, image, price, category }) => (
-				<div className="four wide column" key={id}>
+				<div className="card card-container border w-25" key={id}>
 					<Link to={`/product/${id}`}>
-						<div className="ui link cards">
-							<div className="card">
-								<div className="image">
-									<img src={image} alt={title} />
+						<div className="card">
+							<div className="">
+								<div>
+									<img src={image} alt={title}  className="product-img"/>
 								</div>
-								<div className="content">
-									<div className="header">{title}</div>
-									<div className="meta price">$ {price}</div>
-									<div className="meta">{category}</div>
+								<div className="card-body">
+									<div className="card-title">{title}</div>
+									<div className="">$ {price}</div>
+									<div className="">{category}</div>
 								</div>
 							</div>
 						</div>

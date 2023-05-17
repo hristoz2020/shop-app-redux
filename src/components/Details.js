@@ -23,40 +23,40 @@ const Details = () => {
 	}, [productId, dispatch]);
 
 	return (
-		<div className="ui grid container">
+		<div className="">
 			{Object.keys(product).length === 0 ? (
 				<div>...Loading</div>
 			) : (
-				<div className="ui placeholder segment">
-					<div className="ui two column stackable center aligned grid">
-						<div className="ui vertical divider">AND</div>
-						<div className="middle aligned row">
-							<div className="column lp">
+				<div className="">
+					<div className="">
+						<div className=""></div>
+						<div className="">
+							<div className="">
 								<img
-									className="ui fluid image"
+									className=""
 									src={product.image}
 									alt="product"
 								/>
 							</div>
-							<div className="column rp">
+							<div className="">
 								<h1>{product.title}</h1>
 								<h2>
-									<a className="ui teal tag label" href="/">
+									<span className="">
 										${product.price}
-									</a>
+									</span>
 								</h2>
-								<h3 className="ui brown block header">
+								<h3 className="">
 									{product.category}
 								</h3>
 								<p>{product.description}</p>
 								<div
-									className="ui vertical animated button"
+									className=""
 									tabIndex="0"
 								>
-									<div className="hidden content">
-										<i className="shop icon"></i>
+									<div className="">
+										<i className=""></i>
 									</div>
-									<div className="visible content">
+									<div className="">
 										Add to Cart
 									</div>
 								</div>
