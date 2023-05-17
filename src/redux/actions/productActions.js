@@ -19,3 +19,10 @@ export const removeSelectedProduct = () => {
 		type: actionTypes.REMOVE_SELECTED_PRODUCT,
 	};
 };
+
+export const setCategories = (categories) => {
+	return {
+		type: actionTypes.SET_CATEGORIES,
+		payload: categories
+	}
+}
