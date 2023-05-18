@@ -15,8 +15,8 @@ const Categories = () => {
 
 	return (
 		<div>
-			<h1>Categories</h1>
 			<CategoriesSelect />
+			
 		</div>
 	);
 };

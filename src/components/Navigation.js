@@ -22,14 +22,14 @@ const Header = () => {
 						>
 							Categories
 						</Link>
-						<Link to="/" className="nav-link text-light p-1">
+						<Link to="/other" className="nav-link text-light p-1">
 							Other
 						</Link>
 					</div>
 				</div>
-				<div class="form-check form-switch m-2">
+				<div className="form-check form-switch m-2">
 					<input
-						class="form-check-input"
+						className="form-check-input"
 						type="checkbox"
 						id="flexSwitchCheckChecked"
 					/>
