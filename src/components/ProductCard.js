@@ -2,20 +2,31 @@ import { useSelector } from "react-redux";
 
 const Products = () => {
 	const products = useSelector((state) => state.allProducts.products);
+	console.log(products);
 
-	return products.map(({ id, title, image, price, category }) => (
-		<div
-			className="card d-flex align-items-center border w-25 m-3 bg-light"
-			key={id}
-		>
-			<img src={image} alt={title} className="product-img card-title" />
-			<div className="card-body">
-				<p className="text-dark">{title}</p>
-				<p className="text-dark">$ {price}</p>
-				<p className="text-dark">{category}</p>
+	return products.map(({ id, title, image, price, category }) => {
+		let productTitle =
+			title.length > 31 ? title.slice(0, 50).concat("...") : title;
+		return (
+			<div
+				className="card d-flex align-items-center border w-25 m-2 bg-light"
+				key={id}
+			>
+				<div className="h-50">
+					<img
+						src={image}
+						alt={productTitle}
+						className="product-img card-title"
+					/>
+				</div>
+				<div className="card-body">
+					<p className="text-dark">{productTitle}</p>
+					<p className="text-dark">$ {price}</p>
+					<p className="text-dark">{category}</p>
+				</div>
 			</div>
-		</div>
-	));
+		);
+	});
 };
 
 export default Products;
