@@ -3,6 +3,14 @@ import { actionTypes } from "../constants/actionTypes";
 const initialState = {
 	products: [],
 	isdarkMode: !!JSON.parse(localStorage.getItem("darkmode")),
+	darkModeOn: {
+		background: "bg-dark",
+		text: "text-light",
+	},
+	darkModeOff: {
+		background: "bg-light",
+		text: "text-dark",
+	},
 };
 
 export const productsReducer = (state = initialState, { type, payload }) => {
@@ -28,7 +36,6 @@ export const selectedProductsReducer = (state = {}, { type, payload }) => {
 export const darkModeReducer = (state = initialState, { type, payload }) => {
 	switch (type) {
 		case actionTypes.DARK_MODE:
-			console.log("payload", payload);
 			return {
 				...state,
 				isdarkMode: payload,
