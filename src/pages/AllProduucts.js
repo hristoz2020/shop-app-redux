@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setProducts } from "../redux/actions/productActions";
 import { getAllProducts } from "../services/productsServices";
-import Products from "../components/Products";
+import ProductCard from "../components/ProductCard";
 
 const AllProducts = () => {
 	const dispatch = useDispatch();
@@ -16,8 +16,8 @@ const AllProducts = () => {
 	}, [dispatch]);
 
 	return (
-		<div className="d-flex flex-wrap m-5">
-			<Products />
+		<div className="d-flex flex-wrap justify-content-center">
+			<ProductCard />
 		</div>
 	);
 };
