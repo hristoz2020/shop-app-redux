@@ -5,12 +5,19 @@ import Details from "./components/Details";
 import Navigation from "./components/Navigation";
 import Categories from "./pages/Categories";
 import Home from "./pages/Home";
-
+import { useSelector } from "react-redux";
 
 function App() {
+	const { isdarkMode, darkModeOn, darkModeOff } = useSelector(
+		(state) => state.darkMode
+	);
+
+	const currentModeBackground = isdarkMode
+		? darkModeOn.background
+		: darkModeOff.background;
 
 	return (
-		<div className="App">
+		<div className={`App ${currentModeBackground}`}>
 			<Navigation />
 			<Routes>
 				<Route path="/" element={<Home />} />
