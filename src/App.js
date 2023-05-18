@@ -6,7 +6,9 @@ import Navigation from "./components/Navigation";
 import Categories from "./pages/Categories";
 import Home from "./pages/Home";
 
+
 function App() {
+
 	return (
 		<div className="App">
 			<Navigation />
