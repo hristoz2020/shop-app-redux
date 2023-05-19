@@ -16,7 +16,6 @@ const Categories = () => {
 	return (
 		<div>
 			<CategoriesSelect />
-			
 		</div>
 	);
 };

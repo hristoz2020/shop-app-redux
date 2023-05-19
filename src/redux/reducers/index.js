@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
 import {
+	categoriesReducer,
 	darkModeReducer,
 	productsReducer,
 	selectedProductsReducer,
@@ -7,6 +8,7 @@ import {
 
 const reducers = combineReducers({
 	allProducts: productsReducer,
+	categories: categoriesReducer,
 	product: selectedProductsReducer,
 	darkMode: darkModeReducer,
 });

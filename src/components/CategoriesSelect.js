@@ -1,15 +1,20 @@
+import { useSelector } from "react-redux";
+
 const CategoriesSelect = () => {
+	const categories = useSelector((state) => state.categories.categories);
+	console.log(categories);
+
 	return (
 		<select
 			className="form-select w-25 m-auto"
 			aria-label="Default select example"
+			defaultValue={
+				categories && categories.length > 0 ? categories[0] : ""
+			}
 		>
-			<option value="electronics" selected>
-				Electronics
-			</option>
-			<option value="jewelery">Jewelery</option>
-			<option value="men's clothing">Men's clothing</option>
-			<option value="women's clothing">Women's clothing</option>
+			{categories.map((category) => (
+				<option value={category} key={category}>{category}</option>
+			))}
 		</select>
 	);
 };

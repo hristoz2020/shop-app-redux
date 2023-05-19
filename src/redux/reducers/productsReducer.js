@@ -2,6 +2,7 @@ import { actionTypes } from "../constants/actionTypes";
 
 const initialState = {
 	products: [],
+	categories: [],
 	isdarkMode: !!JSON.parse(localStorage.getItem("darkmode")),
 	darkModeOn: {
 		background: "bg-dark",
@@ -28,6 +29,15 @@ export const selectedProductsReducer = (state = {}, { type, payload }) => {
 			return { ...state, ...payload };
 		case actionTypes.REMOVE_SELECTED_PRODUCT:
 			return {};
+		default:
+			return state;
+	}
+};
+
+export const categoriesReducer = (state = initialState, { type, payload }) => {
+	switch (type) {
+		case actionTypes.SET_CATEGORIES:
+			return { ...state, categories: payload };
 		default:
 			return state;
 	}
