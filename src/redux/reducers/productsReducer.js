@@ -3,6 +3,7 @@ import { actionTypes } from "../constants/actionTypes";
 const initialState = {
 	products: [],
 	categories: [],
+	selectedCategory: "electronics",
 	isdarkMode: !!JSON.parse(localStorage.getItem("darkmode")),
 	darkModeOn: {
 		background: "bg-dark",
@@ -38,6 +39,16 @@ export const categoriesReducer = (state = initialState, { type, payload }) => {
 	switch (type) {
 		case actionTypes.SET_CATEGORIES:
 			return { ...state, categories: payload };
+		default:
+			return state;
+	}
+};
+
+export const selectedCategoryReducer = (state = initialState, { type, payload }) => {
+	console.log("selected category payload", payload);
+	switch (type) {
+		case actionTypes.SET_SELECTEDCATEGORY:
+			return { ...state, selectedCategory: payload };
 		default:
 			return state;
 	}

@@ -1,9 +1,6 @@
-import { useSelector } from "react-redux";
 
-const Products = () => {
-	const products = useSelector((state) => state.allProducts.products);
-	console.log(products);
-
+const ProductCard = ({products}) => {
+	
 	return products.map(({ id, title, image, price, category }) => {
 		let productTitle =
 			title.length > 31 ? title.slice(0, 50).concat("...") : title;
@@ -29,4 +26,4 @@ const Products = () => {
 	});
 };
 
-export default Products;
+export default ProductCard;
