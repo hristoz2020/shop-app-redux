@@ -15,6 +15,13 @@ const Categories = () => {
 		(state) => state.selectedCategory.selectedCategory
 	);
 	const [products, setProducts] = useState([]);
+	const { isdarkMode, darkModeOn, darkModeOff } = useSelector(
+		(state) => state.darkMode
+	);
+
+	const currentModeText = isdarkMode
+		? darkModeOn.text
+		: darkModeOff.text;
 
 	useEffect(() => {
 		getAllCategories()
@@ -32,7 +39,7 @@ const Categories = () => {
 		<div>
 			<CategoriesSelect />
 			<div className="d-flex flex-wrap justify-content-center mt-5">
-				{products.length < 1 && <Loader color={"text-light"} />}
+				{products.length < 1 && <Loader color={currentModeText} />}
 				{products.length > 0 && <ProductCard products={products} />}
 			</div>
 		</div>
