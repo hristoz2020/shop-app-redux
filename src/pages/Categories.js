@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { setCategories } from "../redux/actions/productActions";
 import CategoriesSelect from "../components/CategoriesSelect";
 import ProductCard from "../components/ProductCard";
+import Loader from "../components/Loader";
 
 const Categories = () => {
 	const dispatch = useDispatch();
@@ -14,7 +15,7 @@ const Categories = () => {
 		(state) => state.selectedCategory.selectedCategory
 	);
 	const [products, setProducts] = useState([]);
-	
+
 	useEffect(() => {
 		getAllCategories()
 			.then((categories) => dispatch(setCategories(categories)))
@@ -31,7 +32,8 @@ const Categories = () => {
 		<div>
 			<CategoriesSelect />
 			<div className="d-flex flex-wrap justify-content-center mt-5">
-				<ProductCard products={products} />
+				{products.length < 1 && <Loader color={"text-light"} />}
+				{products.length > 0 && <ProductCard products={products} />}
 			</div>
 		</div>
 	);

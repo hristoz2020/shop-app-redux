@@ -45,7 +45,6 @@ export const categoriesReducer = (state = initialState, { type, payload }) => {
 };
 
 export const selectedCategoryReducer = (state = initialState, { type, payload }) => {
-	console.log("selected category payload", payload);
 	switch (type) {
 		case actionTypes.SET_SELECTEDCATEGORY:
 			return { ...state, selectedCategory: payload };

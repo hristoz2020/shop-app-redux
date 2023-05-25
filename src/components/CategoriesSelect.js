@@ -13,7 +13,6 @@ const CategoriesSelect = () => {
 				categories && categories.length > 0 ? categories[0] : ""
 			}
 			onChange={(e) => {
-				console.log("dispatch", e.target.value);
 				dispatch(setSelectedCategory(e.target.value)
 			)}}
 		>
