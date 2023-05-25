@@ -7,6 +7,13 @@ export const setProducts = (products) => {
 	};
 };
 
+export const setLimitedProducts = (limitedProducts) => {
+	return {
+		type: actionTypes.SET_LIMITED_PRODUCTS,
+		payload: limitedProducts,
+	};
+};
+
 export const selectedProduct = (product) => {
 	return {
 		type: actionTypes.SELECTED_PRODUCT,

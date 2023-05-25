@@ -4,11 +4,13 @@ import {
 	darkModeReducer,
 	productsReducer,
 	selectedProductsReducer,
-	selectedCategoryReducer
+	selectedCategoryReducer,
+	limitedProductsReducer
 } from "./productsReducer";
 
 const reducers = combineReducers({
 	allProducts: productsReducer,
+	limitedProducts: limitedProductsReducer,
 	categories: categoriesReducer,
 	product: selectedProductsReducer,
 	darkMode: darkModeReducer,

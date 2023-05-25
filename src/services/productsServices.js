@@ -27,3 +27,10 @@ export const getProductsByCategories = async (category) => {
 
 	return products;
 };
+
+export const getLimitedProducts = async () => {
+	let response = await fetch(`${baseUrl}/products?limit=5`);
+	let limitedProducts = response.json();
+
+	return limitedProducts;
+};
