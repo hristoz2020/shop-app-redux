@@ -1,6 +1,6 @@
+import { Link } from "react-router-dom";
 
-const ProductCard = ({products}) => {
-	
+const ProductCard = ({ products }) => {
 	return products.map(({ id, title, image, price, category }) => {
 		let productTitle =
 			title.length > 31 ? title.slice(0, 50).concat("...") : title;
@@ -21,6 +21,9 @@ const ProductCard = ({products}) => {
 					<p className="text-dark">$ {price}</p>
 					<p className="text-dark">{category}</p>
 				</div>
+				<Link to={`/products/${id}`} className="btn btn-primary">
+					Details
+				</Link>
 			</div>
 		);
 	});
