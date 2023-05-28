@@ -43,8 +43,8 @@ const Header = () => {
 						>
 							Categories
 						</Link>
-						<Link to="/other" className={`nav-link ${currentModeText} p-1`}>
-							Other
+						<Link to="/favorites" className={`nav-link ${currentModeText} p-1`}>
+							Favorites
 						</Link>
 					</div>
 				</div>
