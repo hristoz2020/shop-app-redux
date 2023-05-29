@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getLimitedProducts } from "../services/productsServices";
-import { setLimitedProducts } from "../redux/actions/productActions";
+import { setLimitedProducts } from "../redux/actions/productsAction";
 import ProductCard from "../components/ProductCard";
 
 const Home = () => {
@@ -26,7 +26,7 @@ const Home = () => {
 				Welcome to FakeShop
 			</h1>
 			<div className="d-flex flex-wrap justify-content-center">
-				{limitedProducts && <ProductCard products={limitedProducts} />}
+				{limitedProducts && limitedProducts.map(product => <ProductCard product={product} key={product.id} />)}
 			</div>
 		</div>
 	);

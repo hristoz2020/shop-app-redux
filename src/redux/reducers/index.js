@@ -5,7 +5,8 @@ import {
 	productsReducer,
 	selectedProductsReducer,
 	selectedCategoryReducer,
-	limitedProductsReducer
+	limitedProductsReducer,
+	favoriteProductsReducer,
 } from "./productsReducer";
 
 const reducers = combineReducers({
@@ -14,7 +15,8 @@ const reducers = combineReducers({
 	categories: categoriesReducer,
 	product: selectedProductsReducer,
 	darkMode: darkModeReducer,
-	selectedCategory: selectedCategoryReducer
+	selectedCategory: selectedCategoryReducer,
+	favoriteProducts: favoriteProductsReducer,
 });
 
 export default reducers;

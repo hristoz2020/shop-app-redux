@@ -3,6 +3,7 @@ import { actionTypes } from "../constants/actionTypes";
 const initialState = {
 	products: [],
 	limitedProducts: [],
+	favoriteProducts: [],
 	categories: [],
 	selectedCategory: "electronics",
 	isdarkMode: !!JSON.parse(localStorage.getItem("darkmode")),
@@ -25,7 +26,10 @@ export const productsReducer = (state = initialState, { type, payload }) => {
 	}
 };
 
-export const limitedProductsReducer = (state = initialState, { type, payload }) => {
+export const limitedProductsReducer = (
+	state = initialState,
+	{ type, payload }
+) => {
 	switch (type) {
 		case actionTypes.SET_LIMITED_PRODUCTS:
 			return { ...state, limitedProducts: payload };
@@ -45,6 +49,21 @@ export const selectedProductsReducer = (state = {}, { type, payload }) => {
 	}
 };
 
+export const favoriteProductsReducer = (
+	state = initialState,
+	{ type, payload }
+) => {
+	switch (type) {
+		case actionTypes.SET_FAVORITE_PRODUCTS:
+			return {
+				...state,
+				favoriteProducts: [...state.favoriteProducts, payload],
+			};
+		default:
+			return state;
+	}
+};
+
 export const categoriesReducer = (state = initialState, { type, payload }) => {
 	switch (type) {
 		case actionTypes.SET_CATEGORIES:
@@ -54,7 +73,10 @@ export const categoriesReducer = (state = initialState, { type, payload }) => {
 	}
 };
 
-export const selectedCategoryReducer = (state = initialState, { type, payload }) => {
+export const selectedCategoryReducer = (
+	state = initialState,
+	{ type, payload }
+) => {
 	switch (type) {
 		case actionTypes.SET_SELECTEDCATEGORY:
 			return { ...state, selectedCategory: payload };

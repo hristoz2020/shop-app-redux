@@ -4,7 +4,7 @@ import {
 } from "../services/productsServices";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { setCategories } from "../redux/actions/productActions";
+import { setCategories } from "../redux/actions/productsAction";
 import CategoriesSelect from "../components/CategoriesSelect";
 import ProductCard from "../components/ProductCard";
 import Loader from "../components/Loader";
@@ -19,9 +19,7 @@ const Categories = () => {
 		(state) => state.darkMode
 	);
 
-	const currentModeText = isdarkMode
-		? darkModeOn.text
-		: darkModeOff.text;
+	const currentModeText = isdarkMode ? darkModeOn.text : darkModeOff.text;
 
 	useEffect(() => {
 		getAllCategories()
@@ -40,7 +38,10 @@ const Categories = () => {
 			<CategoriesSelect />
 			<div className="d-flex flex-wrap justify-content-center mt-5">
 				{products.length < 1 && <Loader color={currentModeText} />}
-				{products.length > 0 && <ProductCard products={products} />}
+				{products.length > 0 &&
+					products.map((product) => (
+						<ProductCard product={product} key={product.id} />
+					))}
 			</div>
 		</div>
 	);

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
 	selectedProduct,
 	removeSelectedProduct,
-} from "../redux/actions/productActions";
+} from "../redux/actions/productsAction";
 import { getOneProduct } from "../services/productsServices";
 
 const Details = () => {

@@ -14,12 +14,20 @@ export const setLimitedProducts = (limitedProducts) => {
 	};
 };
 
+export const setFavoriteProducts = (product) => {
+	return {
+		type: actionTypes.SET_FAVORITE_PRODUCTS,
+		payload: product,
+	};
+};
+
 export const selectedProduct = (product) => {
 	return {
 		type: actionTypes.SELECTED_PRODUCT,
 		payload: product,
 	};
 };
+
 
 export const removeSelectedProduct = () => {
 	return {

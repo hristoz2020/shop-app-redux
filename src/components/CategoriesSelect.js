@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { setSelectedCategory } from "../redux/actions/productActions";
+import { setSelectedCategory } from "../redux/actions/productsAction";
 
 const CategoriesSelect = () => {
 	const dispatch = useDispatch();
