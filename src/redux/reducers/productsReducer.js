@@ -6,7 +6,7 @@ const initialState = {
 	favoriteProducts: [],
 	categories: [],
 	selectedCategory: "electronics",
-	isdarkMode: !!JSON.parse(localStorage.getItem("darkmode")),
+	isdarkMode: false,
 	darkModeOn: {
 		background: "bg-dark",
 		text: "text-light",
