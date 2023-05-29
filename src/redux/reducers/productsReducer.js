@@ -4,6 +4,7 @@ const initialState = {
 	products: [],
 	limitedProducts: [],
 	favoriteProducts: [],
+	cartProducts: [],
 	categories: [],
 	selectedCategory: "electronics",
 	isdarkMode: false,
@@ -67,6 +68,29 @@ export const favoriteProductsReducer = (
 			return {
 				...state,
 				favoriteProducts: filtredProducts,
+			};
+		default:
+			return state;
+	}
+};
+
+export const cartProductsReducer = (
+	state = initialState,
+	{ type, payload }
+) => {
+	switch (type) {
+		case actionTypes.SET_CART_PRODUCTS:
+			return {
+				...state,
+				cartProducts: [...state.cartProducts, payload],
+			};
+		case actionTypes.REMOVE_CART_PRODUCTS:
+			const filtredProducts = state.cartProducts.filter(
+				(item) => item.id !== payload.id
+			);
+			return {
+				...state,
+				cartProducts: filtredProducts,
 			};
 		default:
 			return state;
