@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { setFavoriteProducts, removeFavoriteProduct } from "../redux/actions/productsAction";
+import {
+	setFavoriteProducts,
+	removeFavoriteProduct,
+} from "../redux/actions/productsAction";
 
 const ProductCard = ({ product }) => {
 	const dispatch = useDispatch();
@@ -9,7 +12,9 @@ const ProductCard = ({ product }) => {
 		(state) => state.favoriteProducts.favoriteProducts
 	);
 
-	const [isFavorite, setIsFavorite] = useState(favoriteProducts.find(item => item.id === product.id));
+	const [isFavorite, setIsFavorite] = useState(
+		favoriteProducts.find((item) => item.id === product.id)
+	);
 	const checkIsFavorite = isFavorite ? false : true;
 
 	const addToFavorite = (product) => {
@@ -17,7 +22,7 @@ const ProductCard = ({ product }) => {
 		dispatch(setFavoriteProducts(product));
 	};
 	const removeToFavorite = (product) => {
-		setIsFavorite(false)
+		setIsFavorite(false);
 		dispatch(removeFavoriteProduct(product));
 	};
 
@@ -48,19 +53,17 @@ const ProductCard = ({ product }) => {
 					Details
 				</Link>
 				{checkIsFavorite ? (
-					<button
-						className="btn btn-primary"
+					<span
 						onClick={() => addToFavorite(product)}
 					>
-						Like
-					</button>
+						<i className="fa-regular fa-heart text-danger fs-3"></i>
+					</span>
 				) : (
-					<button
-						className="btn btn-primary"
+					<span
 						onClick={() => removeToFavorite(product)}
 					>
-						Dislike
-					</button>
+						<i className="fa-solid fa-heart text-danger fs-3"></i>
+					</span>
 				)}
 			</div>
 		</div>
