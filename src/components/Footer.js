@@ -12,7 +12,7 @@ const Footer = () => {
 	const currentModeText = isdarkMode ? darkModeOn.text : darkModeOff.text;
 
 	return (
-		<footer className={`${currentModeBackground} border-top`}>
+		<footer className={`${currentModeBackground} border-top mt-4`}>
 			<div className="d-flex justify-content-between pt-2 ">
 				<h5 className={`${currentModeText} ms-2`}>FakeShop</h5>
 				<h5 className={`${currentModeText}`}>© All rights reserved</h5>

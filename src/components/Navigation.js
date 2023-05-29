@@ -21,7 +21,7 @@ const Header = () => {
 	};
 
 	return (
-		<div className={`navbar ${currentModeBackground} border-bottom`}>
+		<div className={`navbar ${currentModeBackground} border-bottom mb-4`}>
 			<div className="d-flex align-items-center justify-content-between w-100">
 				<div className="d-flex ">
 					<h5 className={`${currentModeText} pt-2 ps-2`}>FakeShop</h5>
@@ -46,6 +46,12 @@ const Header = () => {
 						className={`nav-link ${currentModeText} m-1 mt-2 border-start h-25 ps-2`}
 					>
 						Favorites
+					</Link>
+					<Link
+						to="/cart"
+						className={`nav-link ${currentModeText} m-1 mt-2 border-start h-25 ps-2`}
+					>
+						Cart
 					</Link>
 				</div>
 				<div className="form-check form-switch m-2">

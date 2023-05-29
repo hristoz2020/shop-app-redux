@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import { useSelector } from "react-redux";
 import Favorites from "./pages/Favorites";
 import Footer from "./components/Footer";
+import Cart from "./pages/Cart";
 
 function App() {
 	const { isdarkMode, darkModeOn, darkModeOff } = useSelector(
@@ -27,6 +28,7 @@ function App() {
 				<Route path="/products/:productId" element={<Details />} />
 				<Route path="/categories" element={<Categories />} />
 				<Route path="/favorites" element={<Favorites />} />
+				<Route path="/cart" element={<Cart />} />
 				<Route path="*" element={<h1>404 Not Found!!</h1>} />
 			</Routes>
 			<Footer />
