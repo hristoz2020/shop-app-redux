@@ -12,9 +12,7 @@ const Header = () => {
 		? darkModeOn.background
 		: darkModeOff.background;
 
-	const currentModeText = isdarkMode
-		? darkModeOn.text
-		: darkModeOff.text;
+	const currentModeText = isdarkMode ? darkModeOn.text : darkModeOff.text;
 
 	const switchDarkMode = () => {
 		isdarkMode
@@ -23,30 +21,32 @@ const Header = () => {
 	};
 
 	return (
-		<div className={`navbar ${currentModeBackground}`}>
+		<div className={`navbar ${currentModeBackground} border-bottom`}>
 			<div className="d-flex align-items-center justify-content-between w-100">
-				<div className="d-flex align-items-center">
-					<h2 className={`navbar-brand ${currentModeText}`}>FakeShop</h2>
-					<div className="d-flex align-items-center">
-						<Link to="/" className={`nav-link ${currentModeText} p-`}>
-							Home
-						</Link>
-						<Link
-							to="/products"
-							className={`nav-link ${currentModeText} p-1`}
-						>
-							Products
-						</Link>
-						<Link
-							to="/categories"
-							className={`nav-link ${currentModeText} p-1`}
-						>
-							Categories
-						</Link>
-						<Link to="/favorites" className={`nav-link ${currentModeText} p-1`}>
-							Favorites
-						</Link>
-					</div>
+				<div className="d-flex ">
+					<h5 className={`${currentModeText} pt-2 ps-2`}>FakeShop</h5>
+
+					<Link to="/" className={`nav-link ${currentModeText} p-1 pt-2 ps-2`}>
+						Home
+					</Link>
+					<Link
+						to="/products"
+						className={`nav-link ${currentModeText} m-1 mt-2 border-start h-25 ps-2`}
+					>
+						Products
+					</Link>
+					<Link
+						to="/categories"
+						className={`nav-link ${currentModeText} m-1 mt-2 border-start h-25 ps-2`}
+					>
+						Categories
+					</Link>
+					<Link
+						to="/favorites"
+						className={`nav-link ${currentModeText} m-1 mt-2 border-start h-25 ps-2`}
+					>
+						Favorites
+					</Link>
 				</div>
 				<div className="form-check form-switch m-2">
 					<input
