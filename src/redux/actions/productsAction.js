@@ -28,23 +28,29 @@ export const selectedProduct = (product) => {
 	};
 };
 
-
 export const removeSelectedProduct = () => {
 	return {
 		type: actionTypes.REMOVE_SELECTED_PRODUCT,
 	};
 };
 
+export const removeFavoriteProduct = (product) => {
+	return {
+		type: actionTypes.REMOVE_FAVORITE_PRODUCT,
+		payload: product,
+	};
+};
+
 export const setCategories = (categories) => {
 	return {
 		type: actionTypes.SET_CATEGORIES,
-		payload: categories
-	}
-}
+		payload: categories,
+	};
+};
 
 export const setSelectedCategory = (category) => {
 	return {
 		type: actionTypes.SET_SELECTEDCATEGORY,
-		payload: category
-	}
-}
+		payload: category,
+	};
+};

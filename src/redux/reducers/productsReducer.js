@@ -59,6 +59,15 @@ export const favoriteProductsReducer = (
 				...state,
 				favoriteProducts: [...state.favoriteProducts, payload],
 			};
+		case actionTypes.REMOVE_FAVORITE_PRODUCT:
+			const filtredProducts = state.favoriteProducts.filter(
+				(item) => item.id !== payload.id
+			);
+			console.log(filtredProducts);
+			return {
+				...state,
+				favoriteProducts: filtredProducts,
+			};
 		default:
 			return state;
 	}
