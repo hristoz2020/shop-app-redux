@@ -34,7 +34,7 @@ const Categories = () => {
 	}, [selectedCategory]);
 
 	return (
-		<div>
+		<div className="min-height">
 			<CategoriesSelect />
 			<div className="d-flex flex-wrap justify-content-center mt-5">
 				{products.length < 1 && <Loader color={currentModeText} />}

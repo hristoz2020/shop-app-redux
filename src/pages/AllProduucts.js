@@ -16,7 +16,7 @@ const AllProducts = () => {
 	}, [dispatch]);
 
 	return (
-		<div className="d-flex flex-wrap justify-content-center">
+		<div className="d-flex flex-wrap justify-content-center min-height">
 			{products &&
 				products.map((product) => (
 					<ProductCard product={product} key={product.id} />

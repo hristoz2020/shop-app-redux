@@ -21,7 +21,7 @@ const Home = () => {
 	const currentModeText = isdarkMode ? darkModeOn.text : darkModeOff.text;
 
 	return (
-		<div>
+		<div className="min-height">
 			<h1 className={`${currentModeText} text-center`}>
 				Welcome to FakeShop
 			</h1>
