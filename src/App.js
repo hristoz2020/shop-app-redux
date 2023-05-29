@@ -7,6 +7,7 @@ import Categories from "./pages/Categories";
 import Home from "./pages/Home";
 import { useSelector } from "react-redux";
 import Favorites from "./pages/Favorites";
+import Footer from "./components/Footer";
 
 function App() {
 	const { isdarkMode, darkModeOn, darkModeOff } = useSelector(
@@ -28,6 +29,7 @@ function App() {
 				<Route path="/favorites" element={<Favorites />} />
 				<Route path="*" element={<h1>404 Not Found!!</h1>} />
 			</Routes>
+			<Footer />
 		</div>
 	);
 }
