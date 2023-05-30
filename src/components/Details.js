@@ -1,10 +1,10 @@
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
 	selectedProduct,
-	removeSelectedProduct,
 	setCartProducts,
+	removeSelectedProduct,
 	removeCartProduct,
 } from "../redux/actions/productsAction";
 import { getOneProduct } from "../services/productsServices";
@@ -12,6 +12,7 @@ import { getOneProduct } from "../services/productsServices";
 const Details = () => {
 	const { productId } = useParams();
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 	const product = useSelector((state) => state.product);
 	const cartProducts = useSelector(
 		(state) => state.cartProducts.cartProducts
@@ -41,6 +42,7 @@ const Details = () => {
 
 	const removeToCart = (product) => {
 		dispatch(removeCartProduct(product));
+		navigate("/cart");
 	};
 
 	return (
@@ -71,6 +73,7 @@ const Details = () => {
 								Add to Cart
 							</button>
 						)}
+						<button onClick={() => navigate(-1)}>Back</button>
 					</div>
 				</div>
 			)}
