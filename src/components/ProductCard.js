@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
@@ -11,17 +10,11 @@ const ProductCard = ({ product }) => {
 	const favoriteProducts = useSelector(
 		(state) => state.favoriteProducts.favoriteProducts
 	);
-
-	const [isFavorite, setIsFavorite] = useState(
-		favoriteProducts.some((item) => item.id === product.id)
-	);
-
+	const checkIsFavorite = favoriteProducts.some((item) => item.id === product.id);
 	const addToFavorite = (product) => {
-		setIsFavorite(true);
 		dispatch(setFavoriteProducts(product));
 	};
 	const removeToFavorite = (product) => {
-		setIsFavorite(false);
 		dispatch(removeFavoriteProduct(product));
 	};
 
@@ -51,7 +44,7 @@ const ProductCard = ({ product }) => {
 				>
 					Details
 				</Link>
-				{isFavorite ? (
+				{checkIsFavorite ? (
 					<span onClick={() => removeToFavorite(product)}>
 						<i className="fa-solid fa-heart text-danger fs-3"></i>
 					</span>
