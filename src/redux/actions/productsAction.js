@@ -21,6 +21,27 @@ export const setFavoriteProducts = (product) => {
 	};
 };
 
+export const removeFavoriteProduct = (product) => {
+	return {
+		type: actionTypes.REMOVE_FAVORITE_PRODUCT,
+		payload: product,
+	};
+};
+
+export const setCartProducts = (product) => {
+	return {
+		type: actionTypes.SET_CART_PRODUCTS,
+		payload: product,
+	};
+};
+
+export const removeCartProduct = (product) => {
+	return {
+		type: actionTypes.REMOVE_CART_PRODUCTS,
+		payload: product,
+	};
+};
+
 export const selectedProduct = (product) => {
 	return {
 		type: actionTypes.SELECTED_PRODUCT,
@@ -34,12 +55,6 @@ export const removeSelectedProduct = () => {
 	};
 };
 
-export const removeFavoriteProduct = (product) => {
-	return {
-		type: actionTypes.REMOVE_FAVORITE_PRODUCT,
-		payload: product,
-	};
-};
 
 export const setCategories = (categories) => {
 	return {

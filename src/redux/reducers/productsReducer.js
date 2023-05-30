@@ -64,7 +64,6 @@ export const favoriteProductsReducer = (
 			const filtredProducts = state.favoriteProducts.filter(
 				(item) => item.id !== payload.id
 			);
-			console.log(filtredProducts);
 			return {
 				...state,
 				favoriteProducts: filtredProducts,

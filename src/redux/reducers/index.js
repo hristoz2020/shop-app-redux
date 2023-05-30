@@ -18,7 +18,7 @@ const reducers = combineReducers({
 	darkMode: darkModeReducer,
 	selectedCategory: selectedCategoryReducer,
 	favoriteProducts: favoriteProductsReducer,
-	cartProduct: cartProductsReducer,
+	cartProducts: cartProductsReducer,
 });
 
 export default reducers;

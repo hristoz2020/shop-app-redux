@@ -13,9 +13,8 @@ const ProductCard = ({ product }) => {
 	);
 
 	const [isFavorite, setIsFavorite] = useState(
-		favoriteProducts.find((item) => item.id === product.id)
+		favoriteProducts.some((item) => item.id === product.id)
 	);
-	const checkIsFavorite = isFavorite ? false : true;
 
 	const addToFavorite = (product) => {
 		setIsFavorite(true);
@@ -52,17 +51,13 @@ const ProductCard = ({ product }) => {
 				>
 					Details
 				</Link>
-				{checkIsFavorite ? (
-					<span
-						onClick={() => addToFavorite(product)}
-					>
-						<i className="fa-regular fa-heart text-danger fs-3"></i>
+				{isFavorite ? (
+					<span onClick={() => removeToFavorite(product)}>
+						<i className="fa-solid fa-heart text-danger fs-3"></i>
 					</span>
 				) : (
-					<span
-						onClick={() => removeToFavorite(product)}
-					>
-						<i className="fa-solid fa-heart text-danger fs-3"></i>
+					<span onClick={() => addToFavorite(product)}>
+						<i className="fa-regular fa-heart text-danger fs-3"></i>
 					</span>
 				)}
 			</div>
