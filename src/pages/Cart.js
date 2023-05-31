@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import ProductCard from "../components/ProductCard";
+import CartProduct from "../components/CartProduct";
 
 const Cart = () => {
 	const { isdarkMode, darkModeOn, darkModeOff } = useSelector(
@@ -9,8 +9,6 @@ const Cart = () => {
 		(state) => state.cartProducts.cartProducts
 	);
 
-	console.log(cartProducts);
-
 	const currentModeText = isdarkMode ? darkModeOn.text : darkModeOff.text;
 
 	return (
@@ -18,7 +16,7 @@ const Cart = () => {
 			<h1 className={`text-center ${currentModeText}`}>Cart</h1>
 			<div>
 				{cartProducts.map((product) => (
-					<ProductCard product={product} key={product.id} />
+					<CartProduct product={product} key={product.id} />
 				))}
 			</div>
 		</div>
