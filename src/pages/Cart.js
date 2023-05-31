@@ -17,19 +17,35 @@ const Cart = () => {
 		<div className="min-height">
 			<h1 className={`text-center ${currentModeText}`}>Cart</h1>
 			<div>
-				<div class="table-responsive">
-					<table class="table table-bordered m-0">
+				<div className="table-responsive">
+					<table className="table table-bordered m-0">
 						<thead>
 							<tr>
-								<th class="text-center py-3 px-4">
+								<th
+									className={`${currentModeText} text-center py-3 px-4`}
+								>
 									Product Name &amp; Details
 								</th>
-								<th class="text-right py-3 px-4">Price</th>
-								<th class="text-center py-3 px-4">Quantity</th>
-								<th class="text-right py-3 px-4">Total</th>
-								<th class="text-center align-middle py-3 px-0">
-									<button>
-										<i class="fa fa-trash"></i>
+								<th
+									className={`${currentModeText} text-right py-3 px-4`}
+								>
+									Price
+								</th>
+								<th
+									className={`${currentModeText} text-right py-3 px-4`}
+								>
+									Quantity
+								</th>
+								<th
+									className={`${currentModeText} text-right py-3 px-4`}
+								>
+									Total
+								</th>
+								<th className="text-center align-middle py-3 px-0">
+									<button
+										className={`${currentModeText} btn`}
+									>
+										<i className="fa fa-trash"></i>
 									</button>
 								</th>
 							</tr>
@@ -39,30 +55,32 @@ const Cart = () => {
 						))}
 					</table>
 				</div>
-				<div class="d-flex  justify-content-end pb-4">
-					<div>
-						<div>
+				<div className="d-flex  justify-content-end pb-4">
+					<div className="mt-1">
+						<div className="mt-1">
+							<label className={`${currentModeText}`}>
+								Total price
+							</label>
+							<div className="text-large">
+								<strong className={`${currentModeText}`}>
+									?????
+								</strong>
+							</div>
+						</div>
+						<div className="mt-2">
 							<button
 								type="button"
-								class="btn"
+								className={`${currentModeText} btn border me-2`}
 								onClick={() => navigate(-1)}
 							>
 								Back to shopping
 							</button>
 							<button
 								type="button"
-								class="btn btn-lg btn-primary mt-2"
+								className={`${currentModeText} btn border`}
 							>
 								Checkout
 							</button>
-						</div>
-						<div class="mt-1">
-							<label class="text-muted font-weight-normal m-0">
-								Total price
-							</label>
-							<div class="text-large">
-								<strong>?????</strong>
-							</div>
 						</div>
 					</div>
 				</div>

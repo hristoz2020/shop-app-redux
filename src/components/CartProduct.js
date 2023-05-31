@@ -1,50 +1,82 @@
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { removeCartProduct } from "../redux/actions/productsAction";
 
 const CartProduct = ({ product }) => {
 	let productTitle =
 		product.title.length > 31
 			? product.title.slice(0, 50).concat("...")
 			: product.title;
+	const { isdarkMode, darkModeOn, darkModeOff } = useSelector(
+		(state) => state.darkMode
+	);
+    const dispatch = useDispatch();
+	const currentModeText = isdarkMode ? darkModeOn.text : darkModeOff.text;
+	const [quantity, setQuantity] = useState(1);
+	const total = quantity * product.price;
 
 	return (
 		<tbody>
 			<tr>
-				<td class="p-4">
-					<div class="media align-items-center">
+				<td className="p-4">
+					<div className="media align-items-center">
 						<img
 							src={product.image}
-							class="d-block ui-w-40 ui-bordered mr-4 product-img"
+							className="d-block ui-w-40 ui-bordered mr-4 product-img"
 							alt=""
 						/>
-						<div class="media-body">
+						<div className="media-body">
 							<Link
 								to={`/products/${product.id}`}
-								class="d-block text-dark"
+								className={`${currentModeText} d-block`}
 							>
 								{productTitle}
 							</Link>
-							<small>
-								<span class="text-muted">Category: </span>{" "}
+							<small className={`${currentModeText}`}>
+								<span className={`${currentModeText}`}>
+									Category:{" "}
+								</span>
 								{product.category}
 							</small>
 						</div>
 					</div>
 				</td>
-				<td class="text-right font-weight-semibold align-middle p-4">
+				<td
+					className={`${currentModeText} text-right font-weight-semibold align-middle p-4`}
+				>
 					{product.price} BGN
 				</td>
-				<td class="align-middle p-4">
-					<input
-						type="text"
-						class="form-control text-center"
-						value="2"
-					/>
+				<td className="align-middle">
+					<div className="d-flex justify-content-center">
+						<button onClick={() => setQuantity(quantity + 1)}>
+							+
+						</button>
+						<label
+							type="number"
+							className="form-control text-center w-25"
+						>
+							{quantity}
+						</label>
+						<button onClick={() => setQuantity(quantity - 1)}>
+							-
+						</button>
+					</div>
 				</td>
-				<td class="text-right font-weight-semibold align-middle p-4">
-					/total/
+				<td
+					className={`${currentModeText} text-right font-weight-semibold align-middle p-4`}
+				>
+					{total} BGN
 				</td>
-				<td class="text-center align-middle px-0">
-					<i class="fa-solid fa-x text-danger"></i>
+				<td className="text-center align-middle px-0">
+					<button
+                    className="btn"
+						onClick={() =>
+							dispatch(removeCartProduct(product))
+						}
+					>
+						<i className="fa-solid fa-x text-danger"></i>
+					</button>
 				</td>
 			</tr>
 		</tbody>
