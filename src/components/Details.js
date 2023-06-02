@@ -33,7 +33,7 @@ const Details = () => {
 	const { isdarkMode, darkModeOn, darkModeOff } = useSelector(
 		(state) => state.darkMode
 	);
-
+	const checkIsCartProduct = cartProducts.some((item) => item.id === product.id);
 	const currentModeBackground = isdarkMode
 		? darkModeOn.background
 		: darkModeOff.background;
@@ -53,33 +53,47 @@ const Details = () => {
 
 	return (
 		<div className={`min-height ${currentModeBackground}`}>
-			{Object.keys(product).length === 0 ? (
-				<div>...Loading</div>
-			) : (
-				<div className={`d-flex border bg-white w-50`}>
-					<div className="">
+			{Object.keys(product).length === 0 && <div>...Loading</div>}
+			{Object.keys(product).length >= 1 && (
+				<div
+					className={`border bg-white w-50 mx-auto`}
+				>
+					<div className="d-flex justify-content-center">
 						<img
 							className="product-img"
 							src={product.image}
 							alt="product"
 						/>
 					</div>
-					<div className="">
+					<div className="p-2">
 						<h1>{product.title}</h1>
-						<h2>${product.price}</h2>
+						<h2>{product.price} BGN</h2>
 						<h3>{product.category}</h3>
 						<p>{product.description}</p>
-
-						{cartProducts.some((item) => item.id === product.id) ? (
-							<button onClick={() => removeToCart(product)}>
+					</div>
+					<div className="d-flex justify-content-end p-2">
+						{checkIsCartProduct && (
+							<button
+								className="btn btn-danger"
+								onClick={() => removeToCart(product)}
+							>
 								Remove to Cart
 							</button>
-						) : (
-							<button onClick={() => addToCart(product)}>
+						)}
+						{!checkIsCartProduct && (
+							<button
+								className="btn btn-primary"
+								onClick={() => addToCart(product)}
+							>
 								Add to Cart
 							</button>
 						)}
-						<button onClick={() => navigate(-1)}>Back</button>
+						<button
+							className="btn btn-primary ms-3"
+							onClick={() => navigate(-1)}
+						>
+							Back
+						</button>
 					</div>
 				</div>
 			)}
