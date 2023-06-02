@@ -179,15 +179,15 @@ export const darkModeReducer = (state = initialState, { type, payload }) => {
 export const totalPriceReducer = (state = initialState, { type, payload }) => {
 	switch (type) {
 		case actionTypes.SET_TOTAL_PRICE:
-			console.log(payload, "quantity");
-			let total = 0
-			payload.forEach((item) => total += item.quantity + item.price);
-			console.log(total);
-			return {
-				...state,
-				totalPrice: 0,
-			};
+		  const total = payload.reduce(
+			(accumulator, item) => accumulator + item.quantity * item.price,
+			0
+		  );
+		  return {
+			...state,
+			totalPrice: total,
+		  };
 		default:
-			return state;
-	}
+		  return state;
+	  }
 };

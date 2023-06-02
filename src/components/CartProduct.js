@@ -5,7 +5,6 @@ import {
 	removeQuantity,
 	setQuantityAdd,
 	setQuantityRemove,
-	setTotalPrice,
 } from "../redux/actions/productsAction";
 
 const CartProduct = ({ product }) => {
@@ -65,7 +64,6 @@ const CartProduct = ({ product }) => {
 					<button
 						onClick={() => {
 							dispatch(setQuantityAdd(product.id));
-							dispatch(setTotalPrice(quantity));
 						}}
 					>
 						+
@@ -79,7 +77,6 @@ const CartProduct = ({ product }) => {
 					<button
 						onClick={() => {
 							dispatch(setQuantityRemove(product.id));
-							dispatch(setTotalPrice(quantity));
 						}}
 					>
 						-

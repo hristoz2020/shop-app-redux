@@ -1,6 +1,8 @@
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import CartProduct from "../components/CartProduct";
+import { setTotalPrice } from "../redux/actions/productsAction";
 
 const Cart = () => {
 	const { isdarkMode, darkModeOn, darkModeOff } = useSelector(
@@ -9,10 +11,16 @@ const Cart = () => {
 	const cartProducts = useSelector(
 		(state) => state.cartProducts.cartProducts
 	);
+	const quantity = useSelector((state) => state.quantity.quantity);
 	const totalPrice = useSelector((state) => state.totalPrice.totalPrice);
+    
 	const navigate = useNavigate();
-
+	const dispatch = useDispatch();
 	const currentModeText = isdarkMode ? darkModeOn.text : darkModeOff.text;
+
+	useEffect(() => {
+		dispatch(setTotalPrice(quantity));
+	}, [dispatch, quantity]);
 
 	return (
 		<div className="min-height">
