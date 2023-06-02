@@ -10,6 +10,7 @@ import {
 	removeQuantity,
 } from "../redux/actions/productsAction";
 import { getOneProduct } from "../services/productsServices";
+import Loader from "./Loader";
 
 const Details = () => {
 	const { productId } = useParams();
@@ -52,8 +53,8 @@ const Details = () => {
 	};
 
 	return (
-		<div className={`min-height ${currentModeBackground}`}>
-			{Object.keys(product).length === 0 && <div>...Loading</div>}
+		<div className={`min-height ${currentModeBackground} mt-5`}>
+			{Object.keys(product).length === 0 && <Loader />}
 			{Object.keys(product).length >= 1 && (
 				<div
 					className={`border bg-white w-50 mx-auto`}
