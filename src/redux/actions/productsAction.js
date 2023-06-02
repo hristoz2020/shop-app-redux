@@ -55,7 +55,6 @@ export const removeSelectedProduct = () => {
 	};
 };
 
-
 export const setCategories = (categories) => {
 	return {
 		type: actionTypes.SET_CATEGORIES,
@@ -67,5 +66,40 @@ export const setSelectedCategory = (category) => {
 	return {
 		type: actionTypes.SET_SELECTEDCATEGORY,
 		payload: category,
+	};
+};
+
+export const setQuantity = (product) => {
+	return {
+		type: actionTypes.SET_QUANTITY,
+		payload: product,
+	};
+};
+
+export const removeQuantity = (product) => {
+	return {
+		type: actionTypes.REMOVE_QUANTITY,
+		payload: product,
+	};
+};
+
+export const setQuantityAdd = (productId) => {
+	return {
+		type: actionTypes.SET_QUANTITY_ADD,
+		payload: productId,
+	};
+};
+
+export const setQuantityRemove = (productId) => {
+	return {
+		type: actionTypes.SET_QUANTITY_REMOVE,
+		payload: productId,
+	};
+};
+
+export const setTotalPrice = (quantity) => {
+	return {
+		type: actionTypes.SET_TOTAL_PRICE,
+		payload: quantity,
 	};
 };

@@ -6,6 +6,8 @@ import {
 	setCartProducts,
 	removeSelectedProduct,
 	removeCartProduct,
+	setQuantity,
+	removeQuantity,
 } from "../redux/actions/productsAction";
 import { getOneProduct } from "../services/productsServices";
 
@@ -38,11 +40,15 @@ const Details = () => {
 
 	const addToCart = (product) => {
 		dispatch(setCartProducts(product));
+		dispatch(
+			setQuantity({ id: product.id, quantity: 1, price: product.price })
+		);
+		product.amount = 1;
 	};
 
 	const removeToCart = (product) => {
 		dispatch(removeCartProduct(product));
-		navigate("/cart");
+		dispatch(removeQuantity(product));
 	};
 
 	return (

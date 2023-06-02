@@ -16,6 +16,8 @@ const initialState = {
 		background: "bg-light",
 		text: "text-dark",
 	},
+	quantity: [],
+	totalPrice: 0,
 };
 
 export const productsReducer = (state = initialState, { type, payload }) => {
@@ -73,6 +75,51 @@ export const favoriteProductsReducer = (
 	}
 };
 
+export const quantityReducer = (state = initialState, { type, payload }) => {
+	switch (type) {
+		case actionTypes.SET_QUANTITY:
+			return {
+				...state,
+				quantity: [...state.quantity, payload],
+			};
+		case actionTypes.REMOVE_QUANTITY:
+			const filtredQuantity = state.quantity.filter(
+				(item) => item.id !== payload.id
+			);
+			return {
+				...state,
+				quantity: filtredQuantity,
+			};
+		case actionTypes.SET_QUANTITY_ADD:
+			const filteredQuantityAdd = state.quantity.map((item) => {
+				if (item.id === payload) {
+					return { ...item, quantity: item.quantity + 1 };
+				}
+				return item;
+			});
+
+			return {
+				...state,
+				quantity: filteredQuantityAdd,
+			};
+		case actionTypes.SET_QUANTITY_REMOVE:
+			const filteredQuantityRemove = state.quantity.map((item) => {
+				if (item.id === payload) {
+					return { ...item, quantity: item.quantity - 1 };
+				}
+				return item;
+			});
+
+			return {
+				...state,
+				quantity: filteredQuantityRemove,
+			};
+
+		default:
+			return state;
+	}
+};
+
 export const cartProductsReducer = (
 	state = initialState,
 	{ type, payload }
@@ -123,6 +170,22 @@ export const darkModeReducer = (state = initialState, { type, payload }) => {
 			return {
 				...state,
 				isdarkMode: payload,
+			};
+		default:
+			return state;
+	}
+};
+
+export const totalPriceReducer = (state = initialState, { type, payload }) => {
+	switch (type) {
+		case actionTypes.SET_TOTAL_PRICE:
+			console.log(payload, "quantity");
+			let total = 0
+			payload.forEach((item) => total += item.quantity + item.price);
+			console.log(total);
+			return {
+				...state,
+				totalPrice: 0,
 			};
 		default:
 			return state;

@@ -8,6 +8,8 @@ import {
 	limitedProductsReducer,
 	favoriteProductsReducer,
 	cartProductsReducer,
+	quantityReducer,
+	totalPriceReducer,
 } from "./productsReducer";
 
 const reducers = combineReducers({
@@ -19,6 +21,8 @@ const reducers = combineReducers({
 	selectedCategory: selectedCategoryReducer,
 	favoriteProducts: favoriteProductsReducer,
 	cartProducts: cartProductsReducer,
+	quantity: quantityReducer,
+	totalPrice: totalPriceReducer,
 });
 
 export default reducers;
