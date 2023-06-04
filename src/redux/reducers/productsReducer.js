@@ -138,6 +138,11 @@ export const cartProductsReducer = (
 				...state,
 				cartProducts: filtredProducts,
 			};
+		case actionTypes.REAMOVE_ALL_CART_PRODUCTS:
+			return {
+				...state,
+				cartProducts: payload,
+			};
 		default:
 			return state;
 	}
@@ -179,15 +184,15 @@ export const darkModeReducer = (state = initialState, { type, payload }) => {
 export const totalPriceReducer = (state = initialState, { type, payload }) => {
 	switch (type) {
 		case actionTypes.SET_TOTAL_PRICE:
-		  const total = payload.reduce(
-			(accumulator, item) => accumulator + item.quantity * item.price,
-			0
-		  );
-		  return {
-			...state,
-			totalPrice: total,
-		  };
+			const total = payload.reduce(
+				(accumulator, item) => accumulator + item.quantity * item.price,
+				0
+			);
+			return {
+				...state,
+				totalPrice: total,
+			};
 		default:
-		  return state;
-	  }
+			return state;
+	}
 };

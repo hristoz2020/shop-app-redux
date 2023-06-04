@@ -2,7 +2,10 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import CartProduct from "../components/CartProduct";
-import { setTotalPrice } from "../redux/actions/productsAction";
+import {
+	removeAllCartProducts,
+	setTotalPrice,
+} from "../redux/actions/productsAction";
 
 const Cart = () => {
 	const { isdarkMode, darkModeOn, darkModeOff } = useSelector(
@@ -59,6 +62,9 @@ const Cart = () => {
 									<th className="text-center align-middle py-3 px-0">
 										<button
 											className={`${currentModeText} btn`}
+											onClick={() =>
+												dispatch(removeAllCartProducts())
+											}
 										>
 											<i className="fa fa-trash"></i>
 										</button>

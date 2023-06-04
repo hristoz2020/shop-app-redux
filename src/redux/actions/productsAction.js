@@ -103,3 +103,10 @@ export const setTotalPrice = (quantity) => {
 		payload: quantity,
 	};
 };
+
+export const removeAllCartProducts = () => {
+	return {
+		type: actionTypes.REAMOVE_ALL_CART_PRODUCTS,
+		payload: [],
+	};
+};
