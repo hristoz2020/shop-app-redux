@@ -13,7 +13,7 @@ const Cart = () => {
 	);
 	const quantity = useSelector((state) => state.quantity.quantity);
 	const totalPrice = useSelector((state) => state.totalPrice.totalPrice);
-    
+
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const currentModeText = isdarkMode ? darkModeOn.text : darkModeOff.text;
@@ -84,7 +84,7 @@ const Cart = () => {
 								</label>
 								<div className="text-large">
 									<strong className={`${currentModeText}`}>
-										{totalPrice} BGN
+										{totalPrice.toFixed(2)} BGN
 									</strong>
 								</div>
 							</div>
