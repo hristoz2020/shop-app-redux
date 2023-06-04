@@ -1,5 +1,5 @@
 import Modal from "../components/Modal";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import CartProduct from "../components/CartProduct";
@@ -21,8 +21,6 @@ const Cart = () => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
-	const [isModalOpen, setIsModalOpen] = useState(false);
-
 	const currentModeText = isdarkMode ? darkModeOn.text : darkModeOff.text;
 
 	useEffect(() => {
@@ -31,7 +29,6 @@ const Cart = () => {
 
 	return (
 		<div className="min-height">
-			{isModalOpen && <Modal setIsModalOpen={setIsModalOpen} />}
 			<h1 className={`text-center ${currentModeText}`}>Cart</h1>
 			{cartProducts.length === 0 && (
 				<h2 className={`${currentModeText} text-center mt-5`}>
@@ -68,7 +65,9 @@ const Cart = () => {
 										<button
 											className={`${currentModeText} btn`}
 											onClick={() =>
-												dispatch(removeAllCartProducts())
+												dispatch(
+													removeAllCartProducts()
+												)
 											}
 										>
 											<i className="fa fa-trash"></i>
@@ -109,7 +108,9 @@ const Cart = () => {
 								</button>
 								<button
 									className={`${currentModeText} btn border`}
-									onClick={() => setIsModalOpen(true)}
+									type="button"
+									data-bs-toggle="modal"
+									data-bs-target="#myModal"
 								>
 									Checkout
 								</button>
@@ -118,6 +119,7 @@ const Cart = () => {
 					</div>
 				</div>
 			)}
+			<Modal />
 		</div>
 	);
 };
