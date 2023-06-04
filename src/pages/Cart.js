@@ -1,4 +1,5 @@
-import { useEffect } from "react";
+import Modal from "../components/Modal";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import CartProduct from "../components/CartProduct";
@@ -19,6 +20,9 @@ const Cart = () => {
 
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
+
+	const [isModalOpen, setIsModalOpen] = useState(false);
+
 	const currentModeText = isdarkMode ? darkModeOn.text : darkModeOff.text;
 
 	useEffect(() => {
@@ -27,6 +31,7 @@ const Cart = () => {
 
 	return (
 		<div className="min-height">
+			{isModalOpen && <Modal setIsModalOpen={setIsModalOpen} />}
 			<h1 className={`text-center ${currentModeText}`}>Cart</h1>
 			{cartProducts.length === 0 && (
 				<h2 className={`${currentModeText} text-center mt-5`}>
@@ -86,7 +91,7 @@ const Cart = () => {
 						<div className="mt-1">
 							<div className="mt-1">
 								<label className={`${currentModeText}`}>
-									Total price
+									Total price:
 								</label>
 								<div className="text-large">
 									<strong className={`${currentModeText}`}>
@@ -94,7 +99,7 @@ const Cart = () => {
 									</strong>
 								</div>
 							</div>
-							<div className="mt-2">
+							<div className="mt-2 pe-2">
 								<button
 									type="button"
 									className={`${currentModeText} btn border me-2`}
@@ -103,8 +108,8 @@ const Cart = () => {
 									Back to shopping
 								</button>
 								<button
-									type="button"
 									className={`${currentModeText} btn border`}
+									onClick={() => setIsModalOpen(true)}
 								>
 									Checkout
 								</button>

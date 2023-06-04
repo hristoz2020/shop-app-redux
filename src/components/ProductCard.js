@@ -29,10 +29,10 @@ const ProductCard = ({ product }) => {
 				<img
 					src={product.image}
 					alt={productTitle}
-					className="product-img"
+					className="product-img pt-2"
 				/>
 			</div>
-			<div className="card-body p-0">
+			<div className="card-body p-2">
 				<p className="text-dark">{productTitle}</p>
 				<p className="text-dark">$ {product.price}</p>
 				<p className="text-dark">{product.category}</p>
