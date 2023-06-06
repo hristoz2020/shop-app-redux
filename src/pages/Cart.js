@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import CartProduct from "../components/CartProduct";
 import {
 	removeAllCartProducts,
+	removeAllQuantityProducts,
 	setTotalPrice,
 } from "../redux/actions/productsAction";
 
@@ -16,6 +17,7 @@ const Cart = () => {
 		(state) => state.cartProducts.cartProducts
 	);
 	const quantity = useSelector((state) => state.quantity.quantity);
+	console.log("quantity", quantity);
 	const totalPrice = useSelector((state) => state.totalPrice.totalPrice);
 
 	const navigate = useNavigate();
@@ -64,11 +66,14 @@ const Cart = () => {
 									<th className="text-center align-middle py-3 px-0">
 										<button
 											className={`${currentModeText} btn`}
-											onClick={() =>
+											onClick={() => {
+												dispatch(
+													removeAllQuantityProducts()
+												);
 												dispatch(
 													removeAllCartProducts()
-												)
-											}
+												);
+											}}
 										>
 											<i className="fa fa-trash"></i>
 										</button>

@@ -97,6 +97,14 @@ export const setQuantityRemove = (productId) => {
 	};
 };
 
+export const removeAllQuantityProducts = () => {
+	return {
+		type: actionTypes.REMOVE_ALL_QUANTITY_PRODUCTS,
+		payload: [],
+	};
+};
+
+
 export const setTotalPrice = (quantity) => {
 	return {
 		type: actionTypes.SET_TOTAL_PRICE,
@@ -106,7 +114,7 @@ export const setTotalPrice = (quantity) => {
 
 export const removeAllCartProducts = () => {
 	return {
-		type: actionTypes.REAMOVE_ALL_CART_PRODUCTS,
+		type: actionTypes.REMOVE_ALL_CART_PRODUCTS,
 		payload: [],
 	};
 };

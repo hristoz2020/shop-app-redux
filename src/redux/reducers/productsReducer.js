@@ -114,7 +114,11 @@ export const quantityReducer = (state = initialState, { type, payload }) => {
 				...state,
 				quantity: filteredQuantityRemove,
 			};
-
+		case actionTypes.REMOVE_ALL_QUANTITY_PRODUCTS:
+			return {
+				...state,
+				quantity: payload,
+			};
 		default:
 			return state;
 	}
@@ -138,7 +142,7 @@ export const cartProductsReducer = (
 				...state,
 				cartProducts: filtredProducts,
 			};
-		case actionTypes.REAMOVE_ALL_CART_PRODUCTS:
+		case actionTypes.REMOVE_ALL_CART_PRODUCTS:
 			return {
 				...state,
 				cartProducts: payload,

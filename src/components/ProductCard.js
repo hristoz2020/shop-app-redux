@@ -34,7 +34,7 @@ const ProductCard = ({ product }) => {
 			</div>
 			<div className="card-body p-2">
 				<p className="text-dark">{productTitle}</p>
-				<p className="text-dark">$ {product.price}</p>
+				<p className="text-dark">{product.price} BGN</p>
 				<p className="text-dark">{product.category}</p>
 			</div>
 			<div className="d-flex justify-content-between w-100 p-2">

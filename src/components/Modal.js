@@ -1,9 +1,11 @@
 import { useDispatch } from "react-redux";
-import { removeAllCartProducts } from "../redux/actions/productsAction";
+import {
+	removeAllCartProducts,
+	removeAllQuantityProducts,
+} from "../redux/actions/productsAction";
 
 const Modal = () => {
 	const dispatch = useDispatch();
-
 
 	return (
 		<div className="container mt-5">
@@ -12,7 +14,7 @@ const Modal = () => {
 					<div className="modal-content">
 						<div className="modal-header">
 							<h4>
-								<i class="fas fa-shipping-fast"></i>
+								<i className="fas fa-shipping-fast"></i>
 								Shipping Details
 							</h4>
 							<button
@@ -155,7 +157,12 @@ const Modal = () => {
 									<button
 										type="submit"
 										className="btn btn-primary me-2"
-                                        onClick={() => dispatch(removeAllCartProducts())}
+										onClick={() => {
+											dispatch(
+												removeAllQuantityProducts()
+											);
+											dispatch(removeAllCartProducts());
+										}}
 									>
 										Submit
 									</button>
