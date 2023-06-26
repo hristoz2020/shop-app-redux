@@ -10,12 +10,16 @@ const ProductCard = ({ product }) => {
 	const favoriteProducts = useSelector(
 		(state) => state.favoriteProducts.favoriteProducts
 	);
-	const checkIsFavorite = favoriteProducts.some((item) => item.id === product.id);
-	const addToFavorite = (product) => {
-		dispatch(setFavoriteProducts(product));
-	};
-	const removeToFavorite = (product) => {
-		dispatch(removeFavoriteProduct(product));
+	const checkIsFavorite = favoriteProducts.some(
+		(item) => item.id === product.id
+	);
+
+	const toggleFavorite = (product) => {
+		if (checkIsFavorite) {
+			dispatch(removeFavoriteProduct(product));
+		} else {
+			dispatch(setFavoriteProducts(product));
+		}
 	};
 
 	let productTitle =
@@ -45,11 +49,11 @@ const ProductCard = ({ product }) => {
 					Details
 				</Link>
 				{checkIsFavorite ? (
-					<span onClick={() => removeToFavorite(product)}>
+					<span onClick={() => toggleFavorite(product)}>
 						<i className="fa-solid fa-heart text-danger fs-3"></i>
 					</span>
 				) : (
-					<span onClick={() => addToFavorite(product)}>
+					<span onClick={() => toggleFavorite(product)}>
 						<i className="fa-regular fa-heart text-danger fs-3"></i>
 					</span>
 				)}

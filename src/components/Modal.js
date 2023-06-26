@@ -7,6 +7,11 @@ import {
 const Modal = () => {
 	const dispatch = useDispatch();
 
+	const handleSubmit = () => {
+		dispatch(removeAllQuantityProducts());
+		dispatch(removeAllCartProducts());
+	  };
+
 	return (
 		<div className="container mt-5">
 			<div className="modal" id="myModal">
@@ -157,12 +162,7 @@ const Modal = () => {
 									<button
 										type="submit"
 										className="btn btn-primary me-2"
-										onClick={() => {
-											dispatch(
-												removeAllQuantityProducts()
-											);
-											dispatch(removeAllCartProducts());
-										}}
+										onClick={handleSubmit}
 									>
 										Submit
 									</button>

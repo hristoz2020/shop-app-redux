@@ -13,6 +13,7 @@ const Header = () => {
 		: darkModeOff.background;
 
 	const currentModeText = isdarkMode ? darkModeOn.text : darkModeOff.text;
+	const navLinkClassName = `nav-link ${currentModeText} m-1 mt-2 border-start h-25 ps-2`;
 
 	const switchDarkMode = () => {
 		isdarkMode
@@ -23,45 +24,48 @@ const Header = () => {
 	return (
 		<div className={`navbar ${currentModeBackground} border-bottom mb-4`}>
 			<div className="d-flex align-items-center justify-content-between w-100">
-				<div className="d-flex ">
 					<h5 className={`${currentModeText} pt-2 ps-2`}>FakeShop</h5>
+				<div className="d-flex">
 
-					<Link to="/" className={`nav-link ${currentModeText} p-1 pt-2 ps-2`}>
+					<Link
+						to="/"
+						className={`nav-link ${currentModeText} p-1 pt-2 ps-2`}
+					>
 						Home
 					</Link>
 					<Link
 						to="/products"
-						className={`nav-link ${currentModeText} m-1 mt-2 border-start h-25 ps-2`}
+						className={navLinkClassName}
 					>
 						Products
 					</Link>
 					<Link
 						to="/categories"
-						className={`nav-link ${currentModeText} m-1 mt-2 border-start h-25 ps-2`}
+						className={navLinkClassName}
 					>
 						Categories
 					</Link>
 					<Link
 						to="/favorites"
-						className={`nav-link ${currentModeText} m-1 mt-2 border-start h-25 ps-2`}
+						className={navLinkClassName}
 					>
 						Favorites
 					</Link>
 					<Link
 						to="/cart"
-						className={`nav-link ${currentModeText} m-1 mt-2 border-start h-25 ps-2`}
+						className={`nav-link ${currentModeText} m-1 mt-2 border-start border-end h-25 ps-2 pe-2`}
 					>
 						Cart
 					</Link>
-				</div>
-				<div className="form-check form-switch m-2">
-					<input
-						checked={isdarkMode}
-						className="form-check-input"
-						type="checkbox"
-						id="checkbox"
-						onChange={switchDarkMode}
-					/>
+					<div className="form-check form-switch m-1 mt-2 h-25">
+						<input
+							checked={isdarkMode}
+							className="form-check-input"
+							type="checkbox"
+							id="checkbox"
+							onChange={switchDarkMode}
+						/>
+					</div>
 				</div>
 			</div>
 		</div>

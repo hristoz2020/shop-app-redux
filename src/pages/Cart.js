@@ -1,6 +1,6 @@
 import Modal from "../components/Modal";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { batch, useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import CartProduct from "../components/CartProduct";
 import {
@@ -17,13 +17,16 @@ const Cart = () => {
 		(state) => state.cartProducts.cartProducts
 	);
 	const quantity = useSelector((state) => state.quantity.quantity);
-	console.log("quantity", quantity);
 	const totalPrice = useSelector((state) => state.totalPrice.totalPrice);
+
+	// const { isdarkMode, darkModeOn, darkModeOff, cartProducts, quantity, totalPrice } = useSelector((state) => state);
+	// console.log(isdarkMode, darkModeOn, darkModeOff, cartProducts, quantity, totalPrice);
 
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
 	const currentModeText = isdarkMode ? darkModeOn.text : darkModeOff.text;
+	const tableClassName = `${currentModeText} text-right py-3 px-4`;
 
 	useEffect(() => {
 		dispatch(setTotalPrice(quantity));
@@ -48,31 +51,21 @@ const Cart = () => {
 									>
 										Product Name &amp; Details
 									</th>
-									<th
-										className={`${currentModeText} text-right py-3 px-4`}
-									>
-										Price
-									</th>
-									<th
-										className={`${currentModeText} text-right py-3 px-4`}
-									>
-										Quantity
-									</th>
-									<th
-										className={`${currentModeText} text-right py-3 px-4`}
-									>
-										Total
-									</th>
+									<th className={tableClassName}>Price</th>
+									<th className={tableClassName}>Quantity</th>
+									<th className={tableClassName}>Total</th>
 									<th className="text-center align-middle py-3 px-0">
 										<button
 											className={`${currentModeText} btn`}
 											onClick={() => {
-												dispatch(
-													removeAllQuantityProducts()
-												);
-												dispatch(
-													removeAllCartProducts()
-												);
+												batch(() => {
+													dispatch(
+														removeAllQuantityProducts()
+													);
+													dispatch(
+														removeAllCartProducts()
+													);
+												});
 											}}
 										>
 											<i className="fa fa-trash"></i>

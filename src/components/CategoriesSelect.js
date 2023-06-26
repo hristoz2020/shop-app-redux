@@ -11,7 +11,7 @@ const CategoriesSelect = () => {
 			className="form-select w-25 m-auto"
 			aria-label="Default select example"
 			defaultValue={
-				categories && categories.length > 0 ? selectedCategory : ""
+				selectedCategory ?? ""
 			}
 			onChange={(e) => {
 				dispatch(setSelectedCategory(e.target.value));

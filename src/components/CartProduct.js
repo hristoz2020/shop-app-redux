@@ -1,3 +1,4 @@
+import React, { memo, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
@@ -18,17 +19,18 @@ const CartProduct = ({ product }) => {
 	const quantity = useSelector((state) => state.quantity.quantity);
 	const dispatch = useDispatch();
 	const currentModeText = isdarkMode ? darkModeOn.text : darkModeOff.text;
-	let quantityOfProduct = 0;
-	quantity
-		.filter((q) => q.id === product.id)
-		.forEach((q) => {
-			if (q.id === product.id) {
-				quantityOfProduct = q.quantity;
-			}
-		});
+	const quantityOfProduct =
+		quantity.find((q) => q.id === product.id)?.quantity || 0;
 	const total = quantityOfProduct * product.price;
 
-	
+	const handleQuantityAdd = useCallback(() => {
+		dispatch(setQuantityAdd(product.id));
+	}, [dispatch, product.id]);
+
+	const handleQuantityRemove = useCallback(() => {
+		dispatch(setQuantityRemove(product.id));
+	}, [dispatch, product.id]);
+
 	return (
 		<tr>
 			<td className="">
@@ -62,9 +64,7 @@ const CartProduct = ({ product }) => {
 			<td className="align-middle">
 				<div className="d-flex justify-content-center">
 					<button
-						onClick={() => {
-							dispatch(setQuantityAdd(product.id));
-						}}
+						onClick={handleQuantityAdd}
 					>
 						+
 					</button>
@@ -75,9 +75,7 @@ const CartProduct = ({ product }) => {
 						{quantityOfProduct}
 					</label>
 					<button
-						onClick={() => {
-							dispatch(setQuantityRemove(product.id));
-						}}
+						onClick={handleQuantityRemove}
 					>
 						-
 					</button>
@@ -103,4 +101,4 @@ const CartProduct = ({ product }) => {
 	);
 };
 
-export default CartProduct;
+export default memo(CartProduct);

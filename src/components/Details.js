@@ -59,7 +59,7 @@ const Details = () => {
 				<div
 					className={`border bg-white w-50 mx-auto`}
 				>
-					<div className="d-flex justify-content-center">
+					<div className="d-flex justify-content-center pt-4">
 						<img
 							className="product-img"
 							src={product.image}
