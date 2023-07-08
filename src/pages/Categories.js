@@ -1,10 +1,10 @@
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setCategories } from "../redux/actions/productsAction";
 import {
 	getAllCategories,
 	getProductsByCategories,
 } from "../services/productsServices";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
-import { setCategories } from "../redux/actions/productsAction";
 import CategoriesSelect from "../components/CategoriesSelect";
 import ProductCard from "../components/ProductCard";
 import Loader from "../components/Loader";

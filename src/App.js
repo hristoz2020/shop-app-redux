@@ -1,5 +1,4 @@
 import { Route, Routes } from "react-router-dom";
-import "./App.css";
 import AllProducts from "./pages/AllProduucts";
 import Details from "./components/Details";
 import Navigation from "./components/Navigation";
@@ -9,6 +8,7 @@ import { useSelector } from "react-redux";
 import Favorites from "./pages/Favorites";
 import Footer from "./components/Footer";
 import Cart from "./pages/Cart";
+import "./App.css";
 
 function App() {
 	const { isdarkMode, darkModeOn, darkModeOff } = useSelector(

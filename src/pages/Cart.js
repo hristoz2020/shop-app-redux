@@ -10,6 +10,8 @@ import {
 } from "../redux/actions/productsAction";
 
 const Cart = () => {
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
 	const { isdarkMode, darkModeOn, darkModeOff } = useSelector(
 		(state) => state.darkMode
 	);
@@ -18,12 +20,6 @@ const Cart = () => {
 	);
 	const quantity = useSelector((state) => state.quantity.quantity);
 	const totalPrice = useSelector((state) => state.totalPrice.totalPrice);
-
-	// const { isdarkMode, darkModeOn, darkModeOff, cartProducts, quantity, totalPrice } = useSelector((state) => state);
-	// console.log(isdarkMode, darkModeOn, darkModeOff, cartProducts, quantity, totalPrice);
-
-	const navigate = useNavigate();
-	const dispatch = useDispatch();
 
 	const currentModeText = isdarkMode ? darkModeOn.text : darkModeOff.text;
 	const tableClassName = `${currentModeText} text-right py-3 px-4`;
